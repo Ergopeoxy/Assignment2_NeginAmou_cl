@@ -1,0 +1,22 @@
+/********** Template CSS **********/
+:root {
+    --primary: #EB1616;
+    --secondary: #191C24;
+    --light: #9ea2b9;
+    --dark: #000000;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+
+
+
+
+
+
