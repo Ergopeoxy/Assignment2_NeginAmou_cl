@@ -3,13 +3,13 @@
 require_once  "./database/startConnection.php";
 function getOs(){
   
-    $cls = new DatabaseUnix();
-    $con = $cls -> initUnixDatabaseConnection();
+    
+    $con =  startConnection();
     //->localConnection();
     
     //startConnection();
     $sql = "SELECT * from os"; 
-    $result =  $cls ->selectStm($con , $sql);
+    $result = runSelect($con , $sql);
     $html = "";
     if($result!=null){
        // echo "reslt wasnt null";
@@ -32,13 +32,13 @@ function getOs(){
 function getSubscribtion(){
 
     
-    $cls = new DatabaseUnix();
-    $con = $cls -> initUnixDatabaseConnection();
+   
+    $con =  startConnection();
     //->localConnection();
     
     //startConnection();
     $sql = "SELECT * from subscription"; 
-    $result =  $cls ->selectStm($con , $sql);
+    $result = runSelect($con , $sql);
     $html = '<datalist id="subs" name="subs">';
 
 
@@ -64,13 +64,13 @@ function getSubscribtion(){
 function getsubList(){
 
     //echo "in get sub list";
-    $cls = new DatabaseUnix();
-    $con = $cls -> initUnixDatabaseConnection();
+   
+    $con =  startConnection();
     //->localConnection();
     
     //startConnection();
     $sql = "SELECT  u.user_auto_key as ID , u.fname, u.lname, u.email,  u.phone,  b.sub ,  o.os  FROM user as u, subscription as b , os as o where u.book_auto_key = b.book_auto_key and u.os_auto_key = o.os_auto_key;"; 
-    $result =  $cls ->selectStm($con , $sql);
+    $result =  runSelect($con , $sql);
     $html = "";
     if($result!=null){
        // echo "result was not null";
@@ -109,8 +109,8 @@ function addUser($data){
    
 
   // echo "in add user "; 
-   $cls = new DatabaseUnix();
-   $con = $cls -> initUnixDatabaseConnection();
+  
+   $con =  startConnection();
     //->localConnection();
     
     //startConnection();
@@ -118,7 +118,7 @@ function addUser($data){
     $sql = "INSERT INTO `user`(`fname`, `lname`, `email`, `phone`, `book_auto_key`, `os_auto_key`) VALUES 
    (?,?,?,?,(Select b.book_auto_key from subscription as b where b.sub like ?),(Select o.os_auto_key from os as o where o.os like ?)) ON DUPLICATE KEY UPDATE user_auto_key = user_auto_key;"; 
   
-    $result = $cls -> insertStm($con , $sql, $data);
+    $result = runInsert($con , $sql, $data);
     return $result;
 }
 ?>
