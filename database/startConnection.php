@@ -7,7 +7,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "cl_ass1"; 
+        $dbname = "ass2_cl"; 
     
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -52,9 +52,16 @@
             echo "
             New record created successfully
             ";
+
+            return 1;
         } else {
+            echo "<div class='alert alert-danger' role='alert'>
+            There was a problem adding you to the list
+          </div>";
             echo "Error: " . $sql . mysqli_error($conn);
             closeConnection($conn);
+            return 0;
+       
         }
     }
     

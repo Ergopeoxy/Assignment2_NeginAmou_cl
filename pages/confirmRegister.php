@@ -12,18 +12,19 @@
 <body style="height: 100%" height=100% >
 <?php
 if(isset($_POST['Register'])){
-   // print_r($_POST);
+    print_r($_POST);
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $email =  $_POST['email'];
+    $password = $_POST['pass'];
     $phone =  $_POST['phone'];
-    $os = $_POST['os'];
-    $mlist = trim($_POST['publication']);
+
+ 
 
    // echo "before include";
-    include_once './database/forms/registration.php';
+    include_once '../database/forms/registration.php';
    // `fname`, `lname`, `email`, `phone`, `book_auto_key`, `os_auto_key`
-   $result = addUser([$fname, $lname, $email, $phone, $mlist, $os]);
+   $result = addUser([$fname, $lname, $email, $phone,$password ]);
     
 }
 ?>
@@ -33,7 +34,7 @@ if(isset($_POST['Register'])){
     <div class="justify-content-center" style="width:900px; margin:0 auto;">
     
           <div class="alert alert-success" role="alert" <?php if($result == 0){ echo "hidden"; }?>>
-            Hi <?php echo $fname; ?>  Thank you for completing the survey. You have been added to the <?php echo $mlist; ?> .
+            Hi <?php echo $fname; ?>  Thank you for choosing our service ?> .
             <hr>
             The following information has been saved in our database:
               <br/>
@@ -43,9 +44,9 @@ if(isset($_POST['Register'])){
               <br/>
               Phone: <?php echo $phone; ?>
               <br/>
-              OS: <?php echo $os; ?>
+             
 
-              <a href="./showDatabaseContent.php">See the list of subscription</a>
+              Please go to <a href="./trademarkRegistration.php">this</a>  page to register your trademark
 
           </div>
     </div>

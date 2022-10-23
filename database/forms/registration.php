@@ -1,6 +1,6 @@
 <?php
 
-require_once  "./database/startConnection.php";
+require_once  "../database/startConnection.php";
 function getOs(){
   
     
@@ -114,11 +114,23 @@ function addUser($data){
     //->localConnection();
     
     //startConnection();
-   
-    $sql = "INSERT INTO `user`(`fname`, `lname`, `email`, `phone`, `book_auto_key`, `os_auto_key`) VALUES 
-   (?,?,?,?,(Select b.book_auto_key from subscription as b where b.sub like ?),(Select o.os_auto_key from os as o where o.os like ?)) ON DUPLICATE KEY UPDATE user_auto_key = user_auto_key;"; 
+    // $result = addUser([$fname, $lname, $email, $phone,$password ]);
+    $fname = $data[0];
+    $lname = $data[1];
+    $email= $data[2];
+    $phone = $data[3];
+    $password = $data[4];
+    //add encypt password later
+    $sql = "INSERT INTO `users`(`FirstName`, `LastName`, `Email`, `Phone`, `Password`) VALUES 
+   ('$fname','$lname','$email','$phone','$password') ON DUPLICATE KEY UPDATE user_auto_key = user_auto_key;"; 
   
-    $result = runInsert($con , $sql, $data);
+  //echo $sql;
+    $result = runInsert($con , $sql);
     return $result;
+}
+
+
+function getTrademarks(){
+    
 }
 ?>
