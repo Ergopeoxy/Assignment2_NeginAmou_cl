@@ -11,6 +11,7 @@
     
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
+        mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ALL);
         mysqli_options($conn, MYSQLI_OPT_LOCAL_INFILE, true);
         // Check connection
         if ($conn->connect_error) {
@@ -48,17 +49,18 @@
     }
     
     function runInsert($conn, $sql){
-        if (mysqli_query($conn, $sql)) {
-            echo "
-            New record created successfully
-            ";
-
+        echo "In insert";
+        try {
+            mysqli_query($conn, $sql) ;
+            echo "New record created successfully";
             return 1;
-        } else {
+        }catch (Exception $e) {
+            
+        
             echo "<div class='alert alert-danger' role='alert'>
             There was a problem adding you to the list
           </div>";
-            echo "Error: " . $sql . mysqli_error($conn);
+            echo "Error: "  .$e->getMessage(); ;
             closeConnection($conn);
             return 0;
        

@@ -112,7 +112,7 @@ function addUser($data){
   
    $con =  startConnection();
     //->localConnection();
-    
+    echo "in add user ";
     //startConnection();
     // $result = addUser([$fname, $lname, $email, $phone,$password ]);
     $fname = $data[0];
@@ -124,13 +124,13 @@ function addUser($data){
     $sql = "INSERT INTO `users`(`FirstName`, `LastName`, `Email`, `Phone`, `Password`) VALUES 
    ('$fname','$lname','$email','$phone','$password') ON DUPLICATE KEY UPDATE user_auto_key = user_auto_key;"; 
   
-  //echo $sql;
+    echo $sql;
     $result = runInsert($con , $sql);
     return $result;
 }
 
 
 function getTrademarks(){
-    
+
 }
 ?>
