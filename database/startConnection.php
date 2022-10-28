@@ -11,7 +11,7 @@
     
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
-        mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ALL);
+        mysqli_report(MYSQLI_REPORT_ALL & ~MYSQLI_REPORT_INDEX);
         mysqli_options($conn, MYSQLI_OPT_LOCAL_INFILE, true);
         // Check connection
         if ($conn->connect_error) {

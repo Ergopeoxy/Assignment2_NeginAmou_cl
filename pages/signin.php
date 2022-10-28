@@ -27,7 +27,7 @@
                 <?php 
                 
                 ?> 
-                <form action="trademarkRegistration.php" method="post" >
+                <form action="confirmRegister.php" method="post" >
             
 
                     <label for="email">Email</label>
@@ -39,7 +39,7 @@
                     
                     <hr>
                     <button type="button" onclick="history.back()" name="cancel" id="cancel" class="btn btn-primary">Cancel</button>
-                    <button type="submit" name="Register" id="Register" class="btn btn-primary">Login</button>
+                    <button type="submit" name="signin" id="signin" class="btn btn-primary">Login</button>
                    
                 </form>
                 <br>

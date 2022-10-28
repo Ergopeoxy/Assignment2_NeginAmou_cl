@@ -11,6 +11,7 @@
 </head>
 <body style="height: 100%" height=100% >
 <?php
+ include_once '../database/registration.php';
 if(isset($_POST['Register'])){
     print_r($_POST);
     $fname = $_POST['fname'];
@@ -22,7 +23,7 @@ if(isset($_POST['Register'])){
  
 
    // echo "before include";
-    include_once '../database/registration.php';
+   // include_once '../database/registration.php';
    // `fname`, `lname`, `email`, `phone`, `book_auto_key`, `os_auto_key`
    $result = addUser([$fname, $lname, $email, $phone,$password ]);
     
@@ -45,24 +46,9 @@ if(isset($_POST['RegisterTradeMark'])){
   $formFile = $_POST['formFile'];
   $account = $_POST['account'];
 
- // echo "before include";
-  include_once '../database/registration.php';
- // `fname`, `lname`, `email`, `phone`, `book_auto_key`, `os_auto_key`
 
-echo "<br>+++++++++++++++++++++++++++++++++ THIS IS THE ARRAY SENT +++++++++++++++++++++++++++++++<br>";
-print_r([
-  $tname ,
-  $toname,
-  $ttype ,
-  $tdesc  ,
-  $bnumber ,
-  $tdesc,
-  $bnumber ,
-  $baddress,
-  $pcode ,
-  $formFile,
-  $account
-]);
+  //include_once '../database/registration.php';
+
 
           $result2 = addTrademark([
           $tname ,
@@ -79,14 +65,29 @@ print_r([
         ]);
   
 }
+
+
+if(isset($_POST['signin'])){
+  $email = $_POST['email'];
+  $pass = $_POST['pass'];
+  $data = [$email, $pass];
+  $result3 = authenticate($data);
+  if($result3==1){
+    echo "successfully logged in.";
+
+  }else{
+    echo "there was a problem logging you in";
+  }
+}
+
 ?>
 
 
 <div class="align-middle" style="height: 100%; align-items: center;">
     <div class="justify-content-center" style="width:900px; margin:0 auto;">
     
-          <div class="alert alert-success" role="alert" <?php if( !isset($_POST['Register']) || $result == 0 ){ echo "hidden"; }?>>
-            Hi <?php echo $fname; ?>  Thank you for choosing our service ?> .
+          <div class="alert alert-success" role="alert" <?php if( !isset($_POST['Register']) || $result == 0 ){ echo "hidden"; } ?> >
+            Hi <?php echo $fname; ?>  Thank you for choosing our service .
             <hr>
             The following information has been saved in our database:
               <br/>
@@ -110,11 +111,25 @@ print_r([
     
           <div class="alert alert-success" role="alert" <?php if(!isset($_POST['RegisterTradeMark']) || $result2 == 0  ){ echo "hidden"; }?>>
            
-           
+           Your trademark was successfully registered.
+           View <a href="./showDatabaseContent.php?>">this</a>  page for other trademarks  
 
           </div>
     </div>
 </div>
+
+
+<div class="align-middle" style="height: 100%; align-items: center;">
+    <div class="justify-content-center" style="width:900px; margin:0 auto;">
+    
+          <div class="alert alert-success" role="alert" <?php if(!isset($_POST['signin']) || $result3 == 0  ){ echo "hidden"; }?>>
+           
+       Successfully signed in. 
+       Please go to <a href="./trademarkRegistration.php?user=<?php echo $email; ?>">this</a>  page to register your trademark
+          </div>
+    </div>
+</div>
+
 </body>
 </html>
 
