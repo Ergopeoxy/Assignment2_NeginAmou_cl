@@ -22,10 +22,62 @@ if(isset($_POST['Register'])){
  
 
    // echo "before include";
-    include_once '../database/forms/registration.php';
+    include_once '../database/registration.php';
    // `fname`, `lname`, `email`, `phone`, `book_auto_key`, `os_auto_key`
    $result = addUser([$fname, $lname, $email, $phone,$password ]);
     
+}
+
+
+if(isset($_POST['RegisterTradeMark'])){
+  print_r($_POST);
+ 
+  $tname = $_POST['tname'];
+  $toname = $_POST['toname'];
+  $ttype =  $_POST['ttype'];
+  $tdesc = $_POST['tdesc'];
+  $bnumber =  $_POST['bnumber'];
+  $tdesc = $_POST['tdesc'];
+  $bnumber =  $_POST['bnumber'];
+
+  $baddress = $_POST['baddress'];
+  $pcode =  $_POST['pcode'];
+  $formFile = $_POST['formFile'];
+  $account = $_POST['account'];
+
+ // echo "before include";
+  include_once '../database/registration.php';
+ // `fname`, `lname`, `email`, `phone`, `book_auto_key`, `os_auto_key`
+
+echo "<br>+++++++++++++++++++++++++++++++++ THIS IS THE ARRAY SENT +++++++++++++++++++++++++++++++<br>";
+print_r([
+  $tname ,
+  $toname,
+  $ttype ,
+  $tdesc  ,
+  $bnumber ,
+  $tdesc,
+  $bnumber ,
+  $baddress,
+  $pcode ,
+  $formFile,
+  $account
+]);
+
+          $result2 = addTrademark([
+          $tname ,
+          $toname,
+          $ttype ,
+          $tdesc  ,
+          $bnumber ,
+          $tdesc,
+          $bnumber ,
+          $baddress,
+          $pcode ,
+          $formFile,
+          $account
+        ]);
+  
 }
 ?>
 
@@ -33,7 +85,7 @@ if(isset($_POST['Register'])){
 <div class="align-middle" style="height: 100%; align-items: center;">
     <div class="justify-content-center" style="width:900px; margin:0 auto;">
     
-          <div class="alert alert-success" role="alert" <?php if($result == 0){ echo "hidden"; }?>>
+          <div class="alert alert-success" role="alert" <?php if( !isset($_POST['Register']) || $result == 0 ){ echo "hidden"; }?>>
             Hi <?php echo $fname; ?>  Thank you for choosing our service ?> .
             <hr>
             The following information has been saved in our database:
@@ -46,14 +98,23 @@ if(isset($_POST['Register'])){
               <br/>
              
 
-              Please go to <a href="./trademarkRegistration.php">this</a>  page to register your trademark
+              Please go to <a href="./trademarkRegistration.php?user=<?php echo $email; ?>">this</a>  page to register your trademark
 
           </div>
     </div>
 </div>
 
 
+<div class="align-middle" style="height: 100%; align-items: center;">
+    <div class="justify-content-center" style="width:900px; margin:0 auto;">
+    
+          <div class="alert alert-success" role="alert" <?php if(!isset($_POST['RegisterTradeMark']) || $result2 == 0  ){ echo "hidden"; }?>>
+           
+           
 
+          </div>
+    </div>
+</div>
 </body>
 </html>
 

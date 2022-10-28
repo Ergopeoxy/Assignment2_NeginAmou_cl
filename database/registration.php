@@ -1,6 +1,7 @@
 <?php
 
-require_once  "../database/startConnection.php";
+echo __DIR__;
+include_once __DIR__."\startConnection.php";
 function getOs(){
   
     
@@ -128,9 +129,105 @@ function addUser($data){
     $result = runInsert($con , $sql);
     return $result;
 }
+function addTrademark($data){
+   
 
+    echo "in add TRADEMARK "; 
+    print_r($data);
+     $con =  startConnection();
+      //->localConnection();
+      echo "in add trademark ";
+      //startConnection();
+      // $result = addUser([$fname, $lname, $email, $phone,$password ]);
+      
+  $tname = $data[0];
+  $toname = $data[1];
+  $ttype =  $data[2];
+  $tdesc = $data[3];
+  $bnumber =  $data[4];
+  $tdesc = $data[5];
+  $bnumber =  $data[6];
+  $baddress = $data[7];
+  $pcode =  $data[8];
+  $formFile = isset($data[9]);
+  $account = $data[10];
+      //add encypt password later
+      $sql = "INSERT INTO `trademarks`(`user_auto_key`, `tname`, `toname`, `ttype`, `tdesc`, `bnumber`, `baddress`, `pcode`, `formFile`) VALUES 
+     ( 
+        (SELECT user_auto_key from users where Email = '$account'),
+        '$tname' ,
+          '$toname',
+          '$ttype' ,
+          '$tdesc'  ,
+          '$bnumber' ,
+          
+       
+          '$baddress',
+          '$pcode' ,
+          '$formFile') "; 
+    
+      echo $sql;
+      $result = runInsert($con , $sql);
+     
+      //also add undare for trade auto key on account of user
+    //   $sql2 = "SELECT trade_auto_key from trademarks where tname = '$tname' ";
+
+
+    //   $result2 = runSelect($con, $sql2);
+    //   if($result2 != null){
+    //     while($row = $result2->fetch_assoc()){
+    //         $trade_auto_key = $row['trade_auto_key'];
+    //         $sql3 = "UPDATE `users` SET `trademark_auto_key`='$trade_auto_key' where Email = '$account'";
+    //         runUpdate($con, $sql3 );
+    //     }
+    //   }
+
+    if(is_resource($con)){
+        closeConnection($con);
+    }
+      //if resource closeConnection
+      return $result;
+  }
+  
 
 function getTrademarks(){
+    $con =  startConnection();
+    //->localConnection();
+    echo "in get trademark ";
 
+
+    $sql = "SELECT *, (select email from users where users.trademark_auto_key = tm.trade_auto_key ) from trademark as tm"; 
+    $result =  runSelect($con , $sql);
+    $html = "";
+    if($result!=null){
+       // echo "result was not null";
+        // echo "reslt wasnt null";
+         while($row = $result->fetch_assoc()){
+          
+             $html .= '<tr>
+             <td>'.$row['ID'].'</td>
+             <td>'.$row['lname'].'</td>
+             <td>'.$row['fname'].'</td>
+             <td>'.$row['email'].'</td>
+             <td>'.$row['phone'].'</td>
+             <td>'.$row['sub'].'</td>
+             <td>'.$row['os'].'</td>
+           </tr>';
+
+
+        //    <th scope="col">ID</th>
+        //    <th scope="col">Last Name</th>
+        //    <th scope="col">First Name</th>
+        //    <th scope="col">E-mail Address</th>
+        //    <th scope="col">Phone Number</th>
+        //    <th scope="col">Book</th>
+        //    <th scope="col">Operating System</th>
+         }
+         
+     }
+   
+ 
+     $con = null;
+     return $html;
 }
 ?>

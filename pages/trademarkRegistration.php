@@ -13,11 +13,22 @@
             height: 100%;;
             min-width: 100%;
             width: 100%;
+            background-color: 		#202020;
         } 
         input[type="text"], textarea {
 
-background-color : #d1d1d1; 
+background-color : #FFFFFF;
 
+
+
+}
+
+.form input{
+  background-color: #FFFFFF;
+}
+
+input {
+    background-color: #FFFFFF;
 }
         
         </style>
@@ -46,9 +57,9 @@ background-color : #d1d1d1;
                 
         <main role="main" class="d-flex justify-content-center" id="main">
      
-        <div class="d-flex justify-content-center">
+        <!-- <div class="d-flex justify-content-center"> -->
 
-        <div class="input-group">
+            <!-- <div class="input-group">
                     <div class="form-outline">
                         <input type="search" id="form1" class="form-control" width="100%" />
                        
@@ -56,17 +67,46 @@ background-color : #d1d1d1;
                     <button type="button" class="btn btn-primary">
                         search
                     </button>
-            </div>
-        </div>
+            </div> -->
+      
        
 
-                        <form action="./pages/confirmRegister.php" method="post"> 
 
+            <br/> <br/> <br/> <br/>
+                <form action="confirmRegister.php?user=<?php echo  $_GET['user'];?>" method="post" style="width: 75%; ">
+                    <br>
+                            <label for="account">Acount</label>
+                            <input  class="form-control" name="account" id="account" require value="<?php echo  $_GET['user'];?>" readonly >
+                            <label for="tname">Trademark name</label>
+                            <input  class="form-control" name="tname" id="tname" require >
 
+                            <label for="toname">Name of owner of trademark(Can be an entity like a corporation)</label>
+                            <input  class="form-control" name="toname" id="toname" require >
 
+                            <label for="ttype">  What type of product(s)/service(s) will utilize the mark?</label>
+                            <input  class="form-control" name="ttype" id="ttype" require >
 
-                             </form>                        
-                   
+                            <label for="tdesc"> Describe the services or products that will have the mark?</label>
+                            <textarea class="form-control" name="tdesc" id="tdesc" rows="3" require></textarea>
+                            
+                        
+                            <label for="bnumber">Business registration number</label>
+                            <input  class="form-control" name="bnumber" id="bnumber" require >
+
+                            <label for="baddress">Business address </label>
+                            <input  class="form-control" name="baddress" id="baddress" require >
+
+                            <label for="pcode">Postal code</label>
+                            <input  class="form-control" name="pcode" id="pcode" require >
+
+                           
+                            
+
+                            <label for="formFile" class="form-label">Logo</label>
+                            <input class="form-control" type="file" id="formFile" name="formFile">
+                            <button type="submit" name="RegisterTradeMark" id="RegisterTradeMark" class="btn btn-primary">Save</button>
+                        </form>                        
+                 
                     </main>
             </div>
      </div>
