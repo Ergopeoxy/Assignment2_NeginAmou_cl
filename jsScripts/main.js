@@ -20,7 +20,7 @@ function checkPassword(form) {
 
     // If same return True.
     else{
-        alert("Password Match: Welcome to GeeksforGeeks!")
+       
         return true;
     }
 }

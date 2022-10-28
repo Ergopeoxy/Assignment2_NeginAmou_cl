@@ -39,10 +39,13 @@ body {
    </style>
 </head>
 
-<body style="height: 100%" height=100% >
+<body style="height: 100% ; width:100%;" height=100% >
    
     <!-- <div class="container-fluid position-relative d-flex p-0"> -->
-
+    <?php
+                // include_once "../componenets/navbar.php";
+                include_once __DIR__."/componenets/navbar.php";
+    ?>  
     <hr>
     <div class="align-middle" style="height: 100%; align-items: center;">
     <div class="justify-content-center" style="width:900px; margin:0 auto;">

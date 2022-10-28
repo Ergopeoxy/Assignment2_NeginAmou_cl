@@ -49,7 +49,7 @@
     }
     
     function runInsert($conn, $sql){
-        echo "In insert";
+        //echo "In insert";
         try {
             mysqli_query($conn, $sql) ;
             echo "New record created successfully";

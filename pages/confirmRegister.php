@@ -13,7 +13,7 @@
 <?php
  include_once '../database/registration.php';
 if(isset($_POST['Register'])){
-    print_r($_POST);
+    //print_r($_POST);
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $email =  $_POST['email'];
@@ -31,7 +31,7 @@ if(isset($_POST['Register'])){
 
 
 if(isset($_POST['RegisterTradeMark'])){
-  print_r($_POST);
+  //print_r($_POST);
  
   $tname = $_POST['tname'];
   $toname = $_POST['toname'];
@@ -73,10 +73,11 @@ if(isset($_POST['signin'])){
   $data = [$email, $pass];
   $result3 = authenticate($data);
   if($result3==1){
-    echo "successfully logged in.";
+    echo '<div  class="alert alert-success" role="alert" >successfully logged in.</div>';
 
   }else{
-    echo "there was a problem logging you in";
+    echo '<div class="alert alert-success" role="alert" >there was a problem logging you in.</div>';
+
   }
 }
 
@@ -124,7 +125,6 @@ if(isset($_POST['signin'])){
     
           <div class="alert alert-success" role="alert" <?php if(!isset($_POST['signin']) || $result3 == 0  ){ echo "hidden"; }?>>
            
-       Successfully signed in. 
        Please go to <a href="./trademarkRegistration.php?user=<?php echo $email; ?>">this</a>  page to register your trademark
           </div>
     </div>

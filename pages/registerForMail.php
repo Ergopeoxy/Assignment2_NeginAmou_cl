@@ -1,11 +1,6 @@
 
                    
-<script>
-          
-          // Function to check Whether both passwords
-          // is same or not.
-          
-      </script>                       
+                   
                    <div class="bg-secondary text-center rounded p-4">
                         
                         <h6 class="mb-0"> Create your account to register your trademark</h6>

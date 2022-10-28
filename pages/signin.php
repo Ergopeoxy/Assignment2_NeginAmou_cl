@@ -17,6 +17,11 @@
     </style>
  </head>
  <body style="min-height: 100%; height:100%; margin: 0; padding:0" >
+                   
+ <?php
+                // include_once "../componenets/navbar.php";
+                include_once __DIR__."/../componenets/navbar.php";
+    ?>  
  <div class=" h-100 d-flex align-items-center justify-content-center bg-secondary text-center rounded p-4">
      <div class="align-middle" style="height: 50%; width:50%; align-items: center;">
      <div class="justify-content-center" style="width:900px; margin:0 auto;">
