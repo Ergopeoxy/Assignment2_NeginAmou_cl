@@ -50,6 +50,8 @@ body {
     Note that you can subscribe once per email for each course.
     </div>
 
+
+    
     <?php 
           include_once './pages/registerForMail.php';
           ?>   
