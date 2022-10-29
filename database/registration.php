@@ -11,7 +11,7 @@ function addUser($data){
   
    $con =  startConnection();
     //->localConnection();
-    echo "in add user ";
+    //echo "in add user ";
     //startConnection();
     // $result = addUser([$fname, $lname, $email, $phone,$password ]);
     $fname = $data[0];

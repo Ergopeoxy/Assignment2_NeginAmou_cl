@@ -50,7 +50,9 @@ body {
     <div class="align-middle" style="height: 100%; align-items: center;">
     <div class="justify-content-center" style="width:900px; margin:0 auto;">
     <div class="alert alert-warning" role="alert">
-    Note that you can subscribe once per email for each course.
+    This is a simple application to stimulate trademark registrations. Users can register via email and each account has a unique email . Once account is registered they can 
+    navigate to the trademark registration page where they add simple info for their trademarks. This application is designed to accept unique trademarks. The lik showing previous trademarks is 
+    provided in navbar. There is a search bar at top of that page to enable users to see if a name already exists or not quickly.
     </div>
 
 

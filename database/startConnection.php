@@ -52,7 +52,7 @@
         //echo "In insert";
         try {
             mysqli_query($conn, $sql) ;
-            echo "New record created successfully";
+           // echo "New record created successfully";
             return 1;
         }catch (Exception $e) {
             
